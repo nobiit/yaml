@@ -17,14 +17,14 @@ from 1.1 for backwards compatibility.
 
 Specifically, as of v3 of the yaml package:
 
- - YAML 1.1 bools (_yes/no, on/off_) are supported as long as they are being
-   decoded into a typed bool value. Otherwise they behave as a string. Booleans
-   in YAML 1.2 are _true/false_ only.
- - Octals encode and decode as _0777_ per YAML 1.1, rather than _0o777_
-   as specified in YAML 1.2, because most parsers still use the old format.
-   Octals in the  _0o777_ format are supported though, so new files work.
- - Does not support base-60 floats. These are gone from YAML 1.2, and were
-   actually never supported by this package as it's clearly a poor choice.
+- YAML 1.1 bools (_yes/no, on/off_) are supported as long as they are being
+  decoded into a typed bool value. Otherwise they behave as a string. Booleans
+  in YAML 1.2 are _true/false_ only.
+- Octals encode and decode as _0777_ per YAML 1.1, rather than _0o777_
+  as specified in YAML 1.2, because most parsers still use the old format.
+  Octals in the  _0o777_ format are supported though, so new files work.
+- Does not support base-60 floats. These are gone from YAML 1.2, and were
+  actually never supported by this package as it's clearly a poor choice.
 
 and offers backwards
 compatibility with YAML 1.1 in some cases.
@@ -47,7 +47,7 @@ API documentation
 
 If opened in a browser, the import path itself leads to the API documentation:
 
-  - [https://go.nobidev.com/yaml](https://go.nobidev.com/yaml)
+- [https://go.nobidev.com/yaml](https://go.nobidev.com/yaml)
 
 API stability
 -------------
@@ -69,10 +69,10 @@ Example
 package main
 
 import (
-        "fmt"
-        "log"
+	"fmt"
+	"log"
 
-        "go.nobidev.com/yaml"
+	"go.nobidev.com/yaml"
 )
 
 var data = `
@@ -85,41 +85,41 @@ b:
 // Note: struct fields must be public in order for unmarshal to
 // correctly populate the data.
 type T struct {
-        A string
-        B struct {
-                RenamedC int   `yaml:"c"`
-                D        []int `yaml:",flow"`
-        }
+	A string
+	B struct {
+		RenamedC int   `yaml:"c"`
+		D        []int `yaml:",flow"`
+	}
 }
 
 func main() {
-        t := T{}
-    
-        err := yaml.Unmarshal([]byte(data), &t)
-        if err != nil {
-                log.Fatalf("error: %v", err)
-        }
-        fmt.Printf("--- t:\n%v\n\n", t)
-    
-        d, err := yaml.Marshal(&t)
-        if err != nil {
-                log.Fatalf("error: %v", err)
-        }
-        fmt.Printf("--- t dump:\n%s\n\n", string(d))
-    
-        m := make(map[interface{}]interface{})
-    
-        err = yaml.Unmarshal([]byte(data), &m)
-        if err != nil {
-                log.Fatalf("error: %v", err)
-        }
-        fmt.Printf("--- m:\n%v\n\n", m)
-    
-        d, err = yaml.Marshal(&m)
-        if err != nil {
-                log.Fatalf("error: %v", err)
-        }
-        fmt.Printf("--- m dump:\n%s\n\n", string(d))
+	t := T{}
+
+	err := yaml.Unmarshal([]byte(data), &t)
+	if err != nil {
+		log.Fatalf("error: %v", err)
+	}
+	fmt.Printf("--- t:\n%v\n\n", t)
+
+	d, err := yaml.Marshal(&t)
+	if err != nil {
+		log.Fatalf("error: %v", err)
+	}
+	fmt.Printf("--- t dump:\n%s\n\n", string(d))
+
+	m := make(map[interface{}]interface{})
+
+	err = yaml.Unmarshal([]byte(data), &m)
+	if err != nil {
+		log.Fatalf("error: %v", err)
+	}
+	fmt.Printf("--- m:\n%v\n\n", m)
+
+	d, err = yaml.Marshal(&m)
+	if err != nil {
+		log.Fatalf("error: %v", err)
+	}
+	fmt.Printf("--- m dump:\n%s\n\n", string(d))
 }
 ```
 
