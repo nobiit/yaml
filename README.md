@@ -36,18 +36,18 @@ supported since they're a poor design and are gone in YAML 1.2.
 Installation and usage
 ----------------------
 
-The import path for the package is *gopkg.in/yaml.v3*.
+The import path for the package is *go.nobidev.com/yaml*.
 
 To install it, run:
 
-    go get gopkg.in/yaml.v3
+    go get go.nobidev.com/yaml
 
 API documentation
 -----------------
 
 If opened in a browser, the import path itself leads to the API documentation:
 
-  - [https://gopkg.in/yaml.v3](https://gopkg.in/yaml.v3)
+  - [https://go.nobidev.com/yaml](https://go.nobidev.com/yaml)
 
 API stability
 -------------
@@ -72,7 +72,7 @@ import (
         "fmt"
         "log"
 
-        "gopkg.in/yaml.v3"
+        "go.nobidev.com/yaml"
 )
 
 var data = `

@@ -4,8 +4,8 @@ import (
 	"strings"
 	"testing"
 
+	"go.nobidev.com/yaml"
 	. "gopkg.in/check.v1"
-	"gopkg.in/yaml.v3"
 )
 
 var limitTests = []struct {
